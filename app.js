@@ -1,19 +1,27 @@
 
-const cardNumbers = 10;
-// const fetchApi = async () => {
-// 	for (let i = 1; i <= cardNumbers; i++) {
-// 		await getApi(i);
-// 	}
-// };
+
+const cardNumbers = 100;
 
 const getApi = async (id) => {
 	const url = `https://api.coinstats.app/public/v1/coins/?skip=0&limit=${cardNumbers}&currency=INR`;
 	const res = await fetch(url);
-	const data = await res.json(); //coin
-    console.log(data.coins[0].name)
-    
-	
+	const data = await res.json();
+ 
+  let cryptoCoin = "" ;
+  for ( let i = 0; i< cardNumbers; i++){
+    console.log(data.coins[i].name)
+    console.log(data.coins[i].price)
+    console.log(data.coins[i].rank)
+    console.log(data.coins[i].symbol)
+    const name = data.coins[i].name
+    cryptoCoin += "<tr>";
+    cryptoCoin += `<td> ${data.coins[i].rank}</td>`;
+    cryptoCoin += `<td> ${data.coins[i].name} </td>`;
+    cryptoCoin += `<td> ${data.coins[i].price}</td>`;
+    cryptoCoin += `<td> ${data.coins[i].symbol}</td>`;
+  }
+ document.getElementById("data").innerHTML = cryptoCoin;
+
 };
 
 getApi();
-
