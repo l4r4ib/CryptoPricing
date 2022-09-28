@@ -9,11 +9,11 @@ const getApi = async (id) => {
  
   let cryptoCoin = "" ;
   for ( let i = 0; i< cryptoNumber; i++){
+    console.log(data.coins[i].rank)
     console.log(data.coins[i].name)
     console.log(data.coins[i].price)
-    console.log(data.coins[i].rank)
     console.log(data.coins[i].symbol)
-    const name = data.coins[i].name
+    
     cryptoCoin += "<tr>";
     cryptoCoin += `<td> ${data.coins[i].rank}</td>`;
     cryptoCoin += `<td> ${data.coins[i].name} </td>`;
